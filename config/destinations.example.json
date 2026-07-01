@@ -1,0 +1,8 @@
+{
+  "TEST_DEST": {
+    "calledAe": "DEST_AE",
+    "host": "10.10.10.10",
+    "port": 104,
+    "callingAe": "DICOM_TOOLKIT"
+  }
+}
