@@ -2,9 +2,15 @@
 
 Reusable utilities for controlled DICOM study modification, cloning, validation, and sending.
 
+## Project Direction
+
+This toolkit is a standalone, vendor-neutral DICOM utility project. It is not part of the Migration Toolkit, although the Migration Toolkit may eventually consume it.
+
+Primary commands should be cross-platform and shell-agnostic where possible. PowerShell wrappers may be provided for Windows administrators, but the canonical examples should use commands that work from common shells such as PowerShell, cmd, Bash, and zsh.
+
 ## Current Module
 
-### MT-0020 DICOM Study Clone and Send Utility
+### DICOM Study Clone and Send Utility
 
 Creates a new DICOM study from existing source objects by applying controlled demographic and study metadata changes, regenerating UIDs, and optionally sending the modified objects to a configured DICOM destination using DCM4CHE `storescu`.
 
@@ -22,6 +28,7 @@ Creates a new DICOM study from existing source objects by applying controlled de
 - Support dry-run and send modes
 - Use pydicom for metadata editing
 - Use DCM4CHE Toolkit for DICOM network sends
+- Keep primary usage examples shell-agnostic
 
 ## Repository Layout
 
@@ -30,7 +37,7 @@ config/
   destinations.example.json
   study-map.example.csv
 docs/
-  MT-0020-DICOM-Study-Clone-and-Send.md
+  DICOM-Study-Clone-and-Send.md
 input/
   .gitkeep
 logs/
@@ -38,20 +45,21 @@ logs/
 output/
   .gitkeep
 scripts/
-  Invoke-DicomModifySend.ps1
+  dicom_modify_send.py
   modify_dicom_study.py
+  Invoke-DicomModifySend.ps1
 ```
 
 ## Requirements
 
 - Python 3.10+
 - pydicom
-- DCM4CHE Toolkit available locally
-- PowerShell 5.1+ or PowerShell 7+
+- DCM4CHE Toolkit available locally when sending over DICOM networking
+- Optional: PowerShell 5.1+ or PowerShell 7+ for Windows wrapper scripts
 
 Install Python dependency:
 
-```powershell
+```bash
 python -m pip install pydicom
 ```
 
@@ -64,19 +72,33 @@ python -m pip install pydicom
 5. Run modification.
 6. Send with DCM4CHE `storescu` if desired.
 
-## Example
+## Cross-Platform Examples
 
-```powershell
-.\scripts\Invoke-DicomModifySend.ps1 `
-  -StudyMap .\config\study-map.csv `
-  -Destinations .\config\destinations.json `
-  -Dcm4cheBin C:\Tools\dcm4che\bin `
-  -DryRun
+Dry-run:
+
+```bash
+python scripts/modify_dicom_study.py --study-map config/study-map.csv --audit-log logs/audit.csv --dry-run
 ```
 
-Then run without `-DryRun` to write modified files.
+Write modified DICOM files:
 
-Use `-Send` to send modified files after successful generation.
+```bash
+python scripts/modify_dicom_study.py --study-map config/study-map.csv --audit-log logs/audit.csv
+```
+
+Send modified files with DCM4CHE directly:
+
+```bash
+storescu -c DEST_AE@10.10.10.10:104 -b DICOM_TOOLKIT output/modified
+```
+
+## Windows Convenience Wrapper
+
+A PowerShell wrapper may be used on Windows, but it should remain a convenience layer over the cross-platform Python and DCM4CHE commands.
+
+```powershell
+.\scripts\Invoke-DicomModifySend.ps1 -StudyMap .\config\study-map.csv -Destinations .\config\destinations.json -Dcm4cheBin C:\Tools\dcm4che\bin -DryRun
+```
 
 ## Safety Notes
 
