@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local configuration
+config/study-map.csv
+config/destinations.json
+
+# DICOM/source/output data
+input/**
+output/**
+logs/**
+!input/.gitkeep
+!output/.gitkeep
+!logs/.gitkeep
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# PowerShell
+*.ps1xml
