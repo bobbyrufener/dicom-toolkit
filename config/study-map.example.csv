@@ -1,0 +1,2 @@
+SourceFolder,OutputFolder,NewPatientName,NewPatientID,NewDOB,NewSex,NewAccession,NewStudyDescription,NewStudyID,Destination
+input/StudyFiles,output/modified,TEST^PATIENT,TEST123,19700101,M,ACC123456,CT HEAD WITHOUT CONTRAST,ACC123456,TEST_DEST
