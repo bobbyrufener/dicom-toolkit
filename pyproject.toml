@@ -1,0 +1,19 @@
+[project]
+name = "dicom-toolkit"
+version = "0.1.0"
+description = "Cross-platform DICOM utilities for controlled metadata modification, cloning, validation, and sending."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "pydicom>=2.4"
+]
+
+[project.scripts]
+dicom-toolkit = "dicom_toolkit.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
