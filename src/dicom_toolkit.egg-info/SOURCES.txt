@@ -10,4 +10,6 @@ src/dicom_toolkit.egg-info/requires.txt
 src/dicom_toolkit.egg-info/top_level.txt
 src/dicom_toolkit/audit/__init__.py
 src/dicom_toolkit/modify/__init__.py
+src/dicom_toolkit/modify/study_split.py
 src/dicom_toolkit/network/__init__.py
+tests/test_study_split.py

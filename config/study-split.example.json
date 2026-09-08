@@ -1,0 +1,18 @@
+{
+  "source_folder": "../input/source-study",
+  "output_folder": "../output/split-study",
+  "groups": [
+    {
+      "name": "study-a",
+      "series_instance_uids": ["<series-instance-uid-for-group-a>"],
+      "accession_number": "<new-accession-for-group-a>",
+      "study_description": "<new-study-description-for-group-a>"
+    },
+    {
+      "name": "study-b",
+      "series_instance_uids": ["<series-instance-uid-for-group-b>"],
+      "accession_number": "<new-accession-for-group-b>",
+      "study_description": "<new-study-description-for-group-b>"
+    }
+  ]
+}

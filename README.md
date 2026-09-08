@@ -10,6 +10,17 @@ Primary commands should be cross-platform and shell-agnostic where possible. Pow
 
 ## Current Module
 
+### DICOM Study Split Service
+
+Splits selected series from one source study into two or more independent
+studies. It regenerates Study, Series, and SOP Instance UIDs and repairs matching
+UID references in nested sequences. See
+[`docs/DICOM-Study-Split.md`](docs/DICOM-Study-Split.md).
+
+```bash
+dicom-toolkit split-study --manifest config/study-split.json --dry-run
+```
+
 ### DICOM Study Clone and Send Utility
 
 Creates a new DICOM study from existing source objects by applying controlled demographic and study metadata changes, regenerating UIDs, and optionally sending the modified objects to a configured DICOM destination using DCM4CHE `storescu`.
