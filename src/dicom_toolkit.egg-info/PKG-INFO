@@ -2,9 +2,11 @@ Metadata-Version: 2.4
 Name: dicom-toolkit
 Version: 0.1.0
 Summary: Cross-platform DICOM utilities for controlled metadata modification, cloning, validation, and sending.
-Requires-Python: >=3.9
+Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 Requires-Dist: pydicom>=2.4
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
 
 # DICOM Toolkit
 
@@ -17,6 +19,17 @@ This toolkit is a standalone, vendor-neutral DICOM utility project. It is not pa
 Primary commands should be cross-platform and shell-agnostic where possible. PowerShell wrappers may be provided for Windows administrators, but the canonical examples should use commands that work from common shells such as PowerShell, cmd, Bash, and zsh.
 
 ## Current Module
+
+### DICOM Study Split Service
+
+Splits selected series from one source study into two or more independent
+studies. It regenerates Study, Series, and SOP Instance UIDs and repairs matching
+UID references in nested sequences. See
+[`docs/DICOM-Study-Split.md`](docs/DICOM-Study-Split.md).
+
+```bash
+dicom-toolkit split-study --manifest config/study-split.json --dry-run
+```
 
 ### DICOM Study Clone and Send Utility
 

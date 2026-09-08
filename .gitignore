@@ -7,6 +7,7 @@ venv/
 # Local configuration
 config/study-map.csv
 config/destinations.json
+config/study-split.json
 
 # DICOM/source/output data
 input/**

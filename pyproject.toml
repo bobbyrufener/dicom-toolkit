@@ -3,13 +3,16 @@ name = "dicom-toolkit"
 version = "0.1.0"
 description = "Cross-platform DICOM utilities for controlled metadata modification, cloning, validation, and sending."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
   "pydicom>=2.4"
 ]
 
 [project.scripts]
 dicom-toolkit = "dicom_toolkit.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
